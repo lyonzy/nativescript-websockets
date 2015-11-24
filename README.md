@@ -2,40 +2,25 @@
 
 This is a cross platform WebSocket library for IOS and Android.   
 
+The differences between this version and the original this is forked from are:
+ - Libraries are contained under lib/ rather than under support/ with a postinstall.js file. This means that there should be no extra installation steps.
+ - I've fixed (or more accurately, worked around) the issue (here)[https://github.com/NathanaelA/nativescript-websockets/issues/5] using a custom JAR library.
+
 ## License
 
-My code is (c)2015, Master Technology.  All my code is LICENSED under the MIT Licesnse. Any other libraries used may have different licenses; which you may view them by reading the "LICENSE" file.  
+This is module is partially (c)2015, Master Technology, all licensed under the MIT License.  
 
-I do contract work; so if you have a module you want built for NativeScript (or pretty much any other language) feel free to contact me (nathan@master-technology.com).
+The original author (nathan@master-technology.com) does contract work; so if you have a module you want built for NativeScript (or pretty much any other language) feel free to contact him.
 
 ## Installation 
-  
-First run `tns --version`
 
-### v1.1.3 or later
-
-Run `tns plugin add nativescript-websockets` in your ROOT directory of your project.
-
-### v1.1.2 and earlier
-
-Please upgrade to v1.1.3 or later - You can use NPM to upgrade to the latest version by doing a `npm install nativescript -g`.
- 
-## Extra Installation on IOS
-
-* You will need to Double-Click on the \<projname>.xcodeproj file in the /platforms/ios/ folder.
-* Scroll to the bottom of the Targets \<ProjName > -> General window until you find the "Linked Frameworks and Libraries" section
-* Click the **+** button, then type "Security" in the filter and double click on the "Security.Framework" to add it to your project.
-* Click the **+** button, then type "CFNetwork" in the filter and double click on the "CFNetwork.Framework" to add it to your project.
-* Click the **+** button, then type "System" in the filter and double click on the "LibSystem.dylib" to add it to your project.
-* Click the **+** button, then click the "Other" button, then double click parent directory and then on the "PocketSocket" folder, and double click on the "libPocketSocket.a" file.
-* Save your project and exit XCode.
-
-This should only be needed this first time, and currently unfortunately anytime you install new runtimes as the project file gets replaced.  Hopefully NativeScript in the future will have the plugins support added which will make this automatic.
+    tns plugin add git+https://github.com/lyonzy/nativescript-websockets.git  
+	
+The libraries in this fork are under lib/ so there shouldn't be any extra installation steps on modern versions of Nativescript.
 
 ## Limitations
 * The sending of Protocols support is not fully implemented on both platforms.  Do not depend on this; it only partially works.
 * ArrayBuffers crash on the Android Runtime so Binary transfers are actually converted to a normal JS Array instead, once ArrayBuffers work we will switch so that Binary messages are ArrayBuffers
-* if you are on iOS runtimes before v1.2.2 then doing the require('nativescript-websockets') will crash with a really weird error.  This is a bug in the Runtime, and can be worked around see the https://github.com/Nathanaela/nativescript-websockets/issues/1 issue.   
 
 ## Usage 
 
