@@ -157,13 +157,7 @@ NativeWebSockets.prototype._reCreate = function() {
 
     // Check for SSL/TLS
     if (this._url.indexOf("wss:") === 0) {
-        //noinspection JSUnresolvedFunction,JSUnresolvedVariable
-        var sslContext = javax.net.ssl.SSLContext.getInstance( "TLS" );
-        sslContext.init( null, null, null );
-        //noinspection JSUnresolvedFunction
-        var socketFactory = sslContext.getSocketFactory();
-        //noinspection JSUnresolvedFunction
-        this._socket.setSocket( socketFactory.createSocket() );
+		com.lyonzy.sslsockethelper.SSLSocketHelper.addSocket(this._socket);
     }
 };
 
